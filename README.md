@@ -6,9 +6,8 @@ In this repository, we will use Camera as an example to show how our framework c
 
 ### Data
 
-We are providing aggregated data files for testing our code. The data files are available in the `data` folder. The folder contains 3 sub-directories.
+We are providing aggregated data files for testing our code. The data files are available in the `data` folder. The folder contains 2 sub-directories.
 1. `wifi_imu_pairs` -> Contains wifi traffic aggregate for cameras and corresponding IMU data for user motion. e.g., `imu_v_test10.csv` and `wifi_v_test10.csv` where letters `v`, `w` etc. represent a camera.
-2. `false_positive_example` -> Contains wifi traffic aggregate for an Apple device and corresponding IMU data for user motion. This case is an example of false positive.
 3. `no_cause_and_effect` -> Contains wifi traffic aggregate for a device and corresponding IMU data for user motion. No granger causality is detected in this case.
 
 ### Code
