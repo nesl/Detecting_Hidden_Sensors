@@ -1,0 +1,8 @@
+pyshark == 0.4.5
+numpy
+matplotlib
+jupyterlab
+pyqt5
+statsmodels
+pandas
+scipy
