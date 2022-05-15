@@ -44,6 +44,7 @@ If a device is detected as a hidden sensor snooping on the user but is not found
 
 * How to collect our own datasets?
   * Use wireshark to collect `.pcapng` files and use the `aggregate_data` script to extract traffic for every device.
+  * Online tutorial to select a particular frequency and use Wireshark in monitor mode -> https://linuxhint.com/capture_wi-fi_traffic_using_wireshark/
   * Use NTPSenseApp to collect IMU data on your smartphone.
 
 * Can you provide raw .pcapng files?
