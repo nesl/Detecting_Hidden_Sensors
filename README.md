@@ -1,6 +1,6 @@
 # Detecting_Hidden_Sensors
 
-This repository is based on our work from our [USENIX paper](https://www.usenix.org/conference/usenixsecurity21/presentation/singh): "I Always Feel Like Somebody's Sensing Me! A Framework to Detect, Identify, and Localize Clandestine Wireless Sensors"
+This repository is based on our work from our [USENIX Security paper](https://www.usenix.org/conference/usenixsecurity21/presentation/singh)
 
 In this repository, we will use Camera as an example to show how our framework can be used to detect hidden clandestine sensors.
 
