@@ -30,6 +30,23 @@ We are providing aggregated data files for testing our code. The data files are 
 1. Range: The performance depends upon the range of the sensors. For camera, typically the range is within 3m. However, since our framework is created to detect sensors in a small space like a room, the range is more than sufficient. 
 2. Improving performance: Since the camera can be placed anywhere in the room, it is suggested that multiple trial be performed in various parts of the room to increase the chances of detection.
 
+### How to collect your own datasets?
+
+* Wireshark:
+  * Online tutorial to select a particular frequency and use Wireshark in monitor mode -> https://linuxhint.com/capture_wi-fi_traffic_using_wireshark/
+  * Use the tutorial above to scan all the frequencies that your Wi-Fi card supports
+* Time:
+  * Use NTP for time synchorinization. The NTPSenseApp uses [Good Clock](https://github.com/nesl/GoodClock) to synchronize it's time with NTP.
+  * You can force an NTP sync on the laptop using `sudo sntp -s <NTP Server>`. Alternatively, you can stop and restart the `ntp` service on your device.
+* Data collection: 
+  * Use wireshark to collect `.pcapng` files.
+  * Use [NTPSenseApp](https://github.com/nesl/NTPSenseApp) to collect IMU data on your smartphone.
+* Time sync between packet capture and IMU:
+  * Use the `time_sync` script in the `tools` folder to time synchronize the packet capture with IMU.
+  * The script 'crops' the .pcapng file to closest time stamps to the IMU on either side.
+* Data aggregation
+  * Use the `aggregate_data` script to extract traffic for every device.
+
 ### MAC Address Lookup
 
 There are several online MAC lookup services. You may not be able to find everything using just one lookup website. We recommend using a combination. Some of them are listen below:
@@ -42,13 +59,9 @@ If a device is detected as a hidden sensor snooping on the user but is not found
 
 ### FAQ
 
-* How to collect our own datasets?
-  * Use wireshark to collect `.pcapng` files and use the `aggregate_data` script to extract traffic for every device.
-  * Online tutorial to select a particular frequency and use Wireshark in monitor mode -> https://linuxhint.com/capture_wi-fi_traffic_using_wireshark/
-  * Use NTPSenseApp to collect IMU data on your smartphone.
-
 * Can you provide raw .pcapng files?
   * Due to privacy concerns (as pcapng files expose a lot of information about the network), we are not sharing the .pcapng files. We have instead shared aggregated data files in the data folder.
+  * If you want, please email at the address below and we can send you a few sample files.
 
 ### Questions:
 
@@ -58,4 +71,5 @@ If a device is detected as a hidden sensor snooping on the user but is not found
 
 - [x] First release
 - [ ] Optimize the code for time and memory
+- [ ] Realtime implementation
 - [ ] Bug fixes
