@@ -27,8 +27,11 @@ We are providing aggregated data files for testing our code. The data files are 
 
 ### Troubleshooting
 
-1. Range: The performance depends upon the range of the sensors. For camera, typically the range is within 3m. However, since our framework is created to detect sensors in a small space like a room, the range is more than sufficient. 
-2. Improving performance: Since the camera can be placed anywhere in the room, it is suggested that multiple trial be performed in various parts of the room to increase the chances of detection.
+1. Monitor mode: The most common question we receive is people not able to capture any packets. This is always because they were not following the steps [described here](https://github.com/nesl/Detecting_Hidden_Sensors/#how-to-collect-your-own-datasets) and were instead using Airmon.
+2. Jumping jacks: The user must maintain a constant frequency while performing the jumping jacks. Also, ideally the time start-stop times should be similar. We acknowledge that this requires some practice and can be challenging for certain individuals.
+3. Scanning with Wireshark: We have had some questions regarding people not being able to see any traffic being sent by the camera on their wireshark capture. If the camera was indeed livestreaming, then the only reason for this is that the frequency at which the camera was transmitting and the frequency at which Wireshark was scanning are not same. In case the camera is multi-band (2.4/5 GHz), please ensure that the frequency of tranmission and scanning are the same.
+4. Range: The performance depends upon the range of the sensors. For camera, typically the range is within 3m. However, since our framework is created to detect sensors in a small space like a room, the range is more than sufficient. 
+5. Improving performance: Since the camera can be placed anywhere in the room, it is suggested that multiple trials be performed in various parts of the room to increase the chances of detection.
 
 ### How to collect your own datasets?
 
@@ -61,7 +64,7 @@ If a device is detected as a hidden sensor snooping on the user but is not found
 
 * Can you provide raw .pcapng files?
   * Due to privacy concerns (as pcapng files expose a lot of information about the network), we are not sharing the .pcapng files. We have instead shared aggregated data files in the data folder.
-  * If you want, please email at the address below and we can send you a few sample files.
+  * If you want, please email at the address below and we will see if we can send you a sample file.
 
 ### Questions:
 
