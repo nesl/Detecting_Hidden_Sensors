@@ -24,31 +24,6 @@ We are providing aggregated data files for testing our code. The data files are 
 5. To collect IMU data on Android smartphone -> https://github.com/nesl/NTPSenseApp
 6. For DeadReckoning on an Android smartphone -> https://github.com/nisargnp/DeadReckoning
 
-
-### I am using Wireshark but cannot capture any data packets from the camera/other sensor! What should I do?
-
-1. Is the camera live streaming? For most IP cameras, you would need to open the corresponding app on a smartphone and view the live feed to make sure it is live streaming.
-2. Is the camera transmitting in the same frequency band as the one which is being sniffed by wireshark?
-3. Is wireshark being used in [monitor mode](https://github.com/nesl/Detecting_Hidden_Sensors/#how-to-collect-your-own-datasets) to sniff packets? 
-4. Lastly check settings of the camera. Is it using H.264/H.265 encoding? Is it storing data locally and transmitting it to the cloud afterwards (asynchronously) (a way to fool SnoopDog)?
-
-### Cannot detect causality despite performing S5 motion. What should I do?
-
-1. Is the space small or large? Typical room sizes in are around 10 feet x 10 feet. Causality will not be detected if the camera is very far from the user.
-2. Start at the center of the room and do the S5 motion. Then move to different areas. Each S5 motion should take around 35-45 seconds.
-3. There are two flags that help detect causality -> `granger_flag` and `overlap_flag`. Both flags need to be 1 in order to detect causality. `granger_glag` is used to detect causality and comes from the granger causality computation from the `statsmodel` package. `overlap_flag` is used to reduce false positives (since sometimes the granger_flag maybe 1 even when the camera traffic is 0.
-4. You can fine tune the threshold for both `granger_flag` and `overlap_flag` based upon your experiments.
-5. Additionally, some users have reported that using `wifi_data_norm` instead of `wifi_dataa` works better in granger_tests (Block 40 of the notebook).
-6. Make sure there is not motion in the IMU during the `STOP` phase of S5 motion.
-
-### Misc Troubleshooting
-
-1. Monitor mode: The most common question we receive is people not able to capture any packets. This is always because they were not following the steps [described here](https://github.com/nesl/Detecting_Hidden_Sensors/#how-to-collect-your-own-datasets) and were instead using Airmon.
-2. Jumping jacks: The user must maintain a constant frequency while performing the jumping jacks. Also, ideally the duration of jumping jacks within the same trial should be similar. We acknowledge that this requires some practice and can be challenging for certain individuals.
-3. Scanning with Wireshark: We have had some questions regarding people not being able to see any traffic being sent by the camera on their wireshark capture. If the camera was indeed livestreaming, then the only reason for this is that the frequency at which the camera was transmitting and the frequency at which Wireshark was scanning are not same. In case the camera is multi-band (2.4/5 GHz), please ensure that the frequency of tranmission and scanning are the same.
-4. Range: The performance depends upon the range of the sensors. For camera, typically the range is within 3m. However, since our framework is created to detect sensors in a small space like a room, the range is more than sufficient. 
-5. Improving performance: Since the camera can be placed anywhere in the room, it is suggested that multiple trials be performed in various parts of the room to increase the chances of detection.
-
 ### How to collect your own datasets?
 
 * Wireshark:
@@ -75,6 +50,31 @@ There are several online MAC lookup services. You may not be able to find everyt
 4. https://macaddress.io/
 
 If a device is detected as a hidden sensor snooping on the user but is not found in any lookup databases, you can add it to a local file. We used following tools where you can lookup vendor MAC addresses by keywords: https://www.adminsub.net/mac-address-finder/camera
+
+
+### I am using Wireshark but cannot capture any data packets from the camera/other sensor! What should I do?
+
+1. Is the camera live streaming? For most IP cameras, you would need to open the corresponding app on a smartphone and view the live feed to make sure it is live streaming.
+2. Is the camera transmitting in the same frequency band as the one which is being sniffed by wireshark?
+3. Is wireshark being used in [monitor mode](https://github.com/nesl/Detecting_Hidden_Sensors/#how-to-collect-your-own-datasets) to sniff packets? 
+4. Lastly check settings of the camera. Is it using H.264/H.265 encoding? Is it storing data locally and transmitting it to the cloud afterwards (asynchronously) (a way to fool SnoopDog)?
+
+### Cannot detect causality despite performing S5 motion. What should I do?
+
+1. Is the space small or large? Typical room sizes in are around 10 feet x 10 feet. Causality will not be detected if the camera is very far from the user.
+2. Start at the center of the room and do the S5 motion. Then move to different areas. Each S5 motion should take around 35-45 seconds.
+3. There are two flags that help detect causality -> `granger_flag` and `overlap_flag`. Both flags need to be 1 in order to detect causality. `granger_glag` is used to detect causality and comes from the granger causality computation from the `statsmodel` package. `overlap_flag` is used to reduce false positives (since sometimes the granger_flag maybe 1 even when the camera traffic is 0.
+4. You can fine tune the threshold for both `granger_flag` and `overlap_flag` based upon your experiments.
+5. Additionally, some users have reported that using `wifi_data_norm` instead of `wifi_dataa` works better in granger_tests (Block 40 of the notebook).
+6. Make sure there is not motion in the IMU during the `STOP` phase of S5 motion.
+
+### Misc Troubleshooting
+
+1. Monitor mode: The most common question we receive is people not able to capture any packets. This is always because they were not following the steps [described here](https://github.com/nesl/Detecting_Hidden_Sensors/#how-to-collect-your-own-datasets) and were instead using Airmon.
+2. Jumping jacks: The user must maintain a constant frequency while performing the jumping jacks. Also, ideally the duration of jumping jacks within the same trial should be similar. We acknowledge that this requires some practice and can be challenging for certain individuals.
+3. Scanning with Wireshark: We have had some questions regarding people not being able to see any traffic being sent by the camera on their wireshark capture. If the camera was indeed livestreaming, then the only reason for this is that the frequency at which the camera was transmitting and the frequency at which Wireshark was scanning are not same. In case the camera is multi-band (2.4/5 GHz), please ensure that the frequency of tranmission and scanning are the same.
+4. Range: The performance depends upon the range of the sensors. For camera, typically the range is within 3m. However, since our framework is created to detect sensors in a small space like a room, the range is more than sufficient. 
+5. Improving performance: Since the camera can be placed anywhere in the room, it is suggested that multiple trials be performed in various parts of the room to increase the chances of detection.
 
 ### FAQ
 
