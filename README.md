@@ -17,12 +17,13 @@ We are providing aggregated data files for testing our code. The data files are 
 
 ### Requirements
 
-1. Wireshark -> https://linuxhint.com/install_configure_wireshark_ubuntu/
-2. tshark -> https://zoomadmin.com/HowToInstall/UbuntuPackage/tshark
-3. Python version -> Tested on 3.9.7 & 3.6.9
-4. install requirements.txt (Virtualenv strongly recommended)
-5. To collect IMU data on Android smartphone -> https://github.com/nesl/NTPSenseApp
-6. For DeadReckoning on an Android smartphone -> https://github.com/nisargnp/DeadReckoning
+1. OS -> Tested on Ubuntu 18.04 and Ubuntu 20.04
+2. Wireshark -> https://linuxhint.com/install_configure_wireshark_ubuntu/
+3. tshark -> https://zoomadmin.com/HowToInstall/UbuntuPackage/tshark
+4. Python version -> Tested on 3.9.7 & 3.6.9
+5. install requirements.txt (Virtualenv strongly recommended)
+6. To collect IMU data on Android smartphone -> https://github.com/nesl/NTPSenseApp
+7. For DeadReckoning on an Android smartphone -> https://github.com/nisargnp/DeadReckoning
 
 ### How to collect your own datasets?
 
