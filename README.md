@@ -64,10 +64,11 @@ If a device is detected as a hidden sensor snooping on the user but is not found
 
 1. Is the space small or large? Typical room sizes in are around 10 feet x 10 feet. Causality will not be detected if the camera is very far from the user.
 2. Start at the center of the room and do the S5 motion. Then move to different areas. Each S5 motion should take around 35-45 seconds.
-3. There are two flags that help detect causality -> `granger_flag` and `overlap_flag`. Both flags need to be 1 in order to detect causality. `granger_glag` is used to detect causality and comes from the granger causality computation from the `statsmodel` package. `overlap_flag` is used to reduce false positives (since sometimes the granger_flag maybe 1 even when the camera traffic is 0.
+3. There are two flags that help detect causality -> `granger_flag` and `overlap_flag`. Both flags need to be 1 in order to detect causality. `granger_flag` is used to detect causality and comes from the granger causality computation from the `statsmodel` package. `overlap_flag` is used to reduce false positives (since sometimes the granger_flag maybe 1 even when the camera traffic is 0.
 4. You can fine tune the threshold for both `granger_flag` and `overlap_flag` based upon your experiments.
-5. Additionally, some users have reported that using `wifi_data_norm` instead of `wifi_dataa` works better in granger_tests (Block 40 of the notebook).
-6. Make sure there is not motion in the IMU during the `STOP` phase of S5 motion.
+5. `overlap_flag` is to prevent obvious false positive cases and can be ignored i.e. only check the output of `granger_flag` and not `overlap_flag`.
+6. Additionally, some users have reported that using `wifi_data_norm` instead of `wifi_dataa` works better in granger_tests (Block 40 of the notebook).
+7. Make sure there is not motion in the IMU during the `STOP` phase of S5 motion.
 
 ### Misc Troubleshooting
 
